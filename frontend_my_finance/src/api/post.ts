@@ -15,12 +15,7 @@ const user_login = async (username: string, password: string): Promise<LoginResp
     try {
       const response: AxiosResponse<LoginResponse> = await axios.post(
         API_URL + 'auth/login',
-        new URLSearchParams({ username: username, password: password }),
-        {
-          headers: {
-            ...AUTH_HTTP_HEADERS,
-          },
-        }
+        new URLSearchParams({ username: username, password: password }), { headers: { ...AUTH_HTTP_HEADERS } }
       );
       return response.data;
     }
@@ -30,4 +25,4 @@ const user_login = async (username: string, password: string): Promise<LoginResp
     }
 };
 
-  export { user_login };
+export { user_login };
