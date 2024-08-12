@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import HeaderLayout from './layouts/HeaderLayout.vue';
+import NavbarComp from './components/NavbarComp.vue';
 
 </script>
 
 <template>
- <div id="app">
+ <div id="app" class="bg-dark">
    <HeaderLayout />
-   <router-link to="/"></router-link>
+   <NavbarComp />
 
    <router-view></router-view>
  </div>
