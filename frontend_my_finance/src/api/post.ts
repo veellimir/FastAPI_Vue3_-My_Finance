@@ -16,9 +16,7 @@ interface LoginResponse {
 const user_login = async (username: string, password: string): Promise<LoginResponse> => {
     try {
       const response: AxiosResponse<LoginResponse> = await axios.post(
-        API_URL + 'auth/login',
-        new URLSearchParams({ username: username, password: password }),
-        { headers:  AUTH_HTTP_HEADERS  }
+        `${API_URL}auth/login`, new URLSearchParams({ username, password }), { headers:  AUTH_HTTP_HEADERS  }
       );
       return response.data;
     }

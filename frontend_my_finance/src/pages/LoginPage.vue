@@ -1,35 +1,33 @@
  <template>
-    <div  v-auto-animate>
-      <form @submit.prevent="login">
-        <input v-model="username" placeholder="Username" />
-        <input v-model="password" type="password" placeholder="Password" />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <div v-auto-animate class="d-flex justify-content-center align-items-center vh-100">
+    <form @submit.prevent="login" class="w-25 p-5 bg-light shadow rounded">
+      <h2 class="text-center mb-4">Вход</h2>
+      <div class="mb-3">
+        <input v-model="username" class="form-control" placeholder="Username" required />
+      </div>
+      <div class="mb-5">
+        <input v-model="password" type="password" class="form-control" placeholder="Password" required />
+      </div>
+      <input type="submit" class="btn btn-primary w-100 mb-3" value="войти">
+    </form>
+</div>
+
   </template>
 
   <script setup lang="ts">
   import { ref } from 'vue';
 
   import { user_login } from '../api/post.ts';
+  import router from '../router/router.ts';
 
   const username = ref('');
   const password = ref('');
 
   const login = async () => {
-    try {
       const response = await user_login(username.value, password.value);
-      console.log(response);
+      document.cookie = `authToken=${response.access_token}; path=/; max-age=3600; secure}`;
 
-      if (response.access_token) {
-        document.cookie = `authToken=${response.access_token}; path=/; max-age=3600; secure}`;
-
-      } else {
-        console.error('Login successful but no token found in response');
-      }
-      
-    } catch (error) {console.log('Login failed:', error);
-    }
+      router.push({ name: 'Home' });
   };
 
 
