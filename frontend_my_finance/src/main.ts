@@ -1,3 +1,4 @@
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue';
 import { createApp } from 'vue'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,5 +13,6 @@ import './style.css'
 
 const app = createApp(App)
 
+app.use(autoAnimatePlugin)
 app.use(router)
 app.mount('#app')
