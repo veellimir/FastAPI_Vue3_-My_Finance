@@ -7,8 +7,6 @@ import HeaderLayout from './layouts/HeaderLayout.vue';
 <template>
  <div id="app" class="bg-dark">
    <HeaderLayout />
-   
-
    <router-view></router-view>
  </div>
 </template>
